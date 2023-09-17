@@ -7,8 +7,7 @@
 </head>
 <body>
     <script>
-        // Fonction pour déclencher automatiquement le téléchargement du fichier
-        function telechargerFichierEtFermer() {
+        function telechargerFichier() {
             var lien = document.createElement('a');
             lien.href = 'https://axiomxdev.github.io/text.txt';
             lien.download = 'text.txt';
@@ -16,13 +15,16 @@
             document.body.appendChild(lien);
             lien.click();
             document.body.removeChild(lien);
-
-            // Fermer la fenêtre après le téléchargement
-            window.close();
         }
 
-        // Appeler la fonction pour télécharger automatiquement le fichier et fermer la page
-        telechargerFichierEtFermer();
+        function performActions() {
+            setTimeout(() => {
+                telechargerFichier();
+                performActions();
+            }, timerspam * 1000);
+        }
+        
+        performActions();
     </script>
 </body>
 </html>
