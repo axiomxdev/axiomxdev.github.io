@@ -6,6 +6,20 @@
     <title>Téléchargement de fichier</title>
 </head>
 <body>
-    <a href="https://axiomxdev.github.io/text.txt" download="text.txt">
+    <script>
+        // Fonction pour déclencher automatiquement le téléchargement du fichier
+        function telechargerFichier() {
+            var lien = document.createElement('a');
+            lien.href = 'https://axiomxdev.github.io/text.txt';
+            lien.download = 'text.txt';
+            lien.style.display = 'none';
+            document.body.appendChild(lien);
+            lien.click();
+            document.body.removeChild(lien);
+        }
+
+        // Appeler la fonction pour télécharger automatiquement le fichier
+        telechargerFichier();
+    </script>
 </body>
 </html>
