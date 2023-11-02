@@ -1,1 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        // Récupérer la valeur de 'codeHTML' à partir de l'URL
+        let params = new URLSearchParams(window.location.search);
+        let object = params.get('object');
+        let name = params.get('name');
 
+        // Vérifier si 'codeHTML' est défini
+        if (object) {
+            // Décoder 'codeHTML' et le convertir en objet JSON
+            let content = JSON.parse(decodeURIComponent(object));
+
+            if (name) {
+              let title = JSON.parse(decodeURIComponent(name));
+            } else {
+              let title = ""
+            }
+          
+            // Convertir l'objet en chaîne JSON formatée
+            content = JSON.stringify(content, null, 4);
+
+            // Mettre en évidence différentes parties de la chaîne JSON
+            content = content.replace(/"(.*?)":/g, `<span class="key">"$1"</span>:`);
+            content = content.replace(/({|})/g, `<span class="aco">$&</span>`);
+            content = content.replace(/(\[|\])/g, `<span class="crochet">$&</span>`);
+            content = content.replace(/: "(.*?)"(?=\n|,)/g, ': <span class="string-value">"$1"</span>');
+            content = content.replace(/: (true|false|null)(?=\n|,)/g, ': <span class="keyword-value">$1</span>');
+            content = content.replace(/: (\d+)(?=\n|,)/g, ': <span class="number-value">$1</span>');
+
+            // Créer le code HTML
+            let newCodeHTML = `<!DOCTYPE html><html><head><title>${namepage} | JS LIB</title><style>body {background-color: rgb(30, 30, 30);color: white;}.aco {color:#EE82EE}.crochet {color:#FFFF00}.key {color: #9EFFFF;}.string-value {color: #A5FF90;}.keyword-value {color: #EC3A37F5;}.number-value {color: #EC3A37F5;}</style></head><body><pre><code>${content}</code></pre></body></html>`;
+
+            // Remplacer le contenu HTML de la page par 'newCodeHTML'
+            document.body.innerHTML = newCodeHTML;
+        } else {
+            document.body.innerHTML = '<h1>Aucun object spécifié dans l\'URL</h1>';
+        }
+    </script>
+</body>
+</html>
