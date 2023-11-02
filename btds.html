@@ -1,18 +1,1 @@
-<!DOCTYPE html>
-<html>
-<body>
-    <script>
-        // Récupérer la valeur de 'codeHTML' à partir de l'URL
-        let params = new URLSearchParams(window.location.search);
-        let codeHTML = params.get('codeHTML');
 
-        // Vérifier si 'codeHTML' est défini
-        if (codeHTML) {
-            // Remplacer le contenu HTML de la page par 'codeHTML'
-            document.body.innerHTML = decodeURIComponent(codeHTML);
-        } else {
-            document.body.innerHTML = '<h1>Aucun code HTML spécifié dans l\'URL</h1>';
-        }
-    </script>
-</body>
-</html>
