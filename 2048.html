@@ -156,6 +156,22 @@
         moved = moveRight();
         break;
     }
+  
+    if (moved) {
+      addRandomTile();
+      updateGrid();
+    }
+  
+    if (isGameWon()) {
+      alert("Congratulations! You've won!\nYour score is " + score);
+      initializeGame();
+    }
+  
+    if (isGameOver()) {
+      alert("Game over! Your score is " + score);
+      initializeGame();
+      // Optionally, restart the game or perform other actions
+    }
   }
 
   function moveUp() {
@@ -312,9 +328,7 @@
   } 
 
   document.addEventListener("keydown", function(event) {
-    console.log("g")
     let moved = false;
-  
     switch (event.key) {
       case "ArrowUp":
         moved = move("up");
@@ -328,21 +342,6 @@
       case "ArrowRight":
         moved = move("right");
         break;
-    }
-  
-    if (moved) {
-      addRandomTile();
-      updateGrid();
-  
-      if (isGameWon()) {
-        alert("Congratulations! You've won!");
-        initializeGame();
-      }
-  
-      if (isGameOver()) {
-        alert("Game over! Your score is " + score);
-        initializeGame();
-      }
     }
   });
   
